@@ -1,38 +1,49 @@
 package com.example.cashcard.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class CashCard {
-    @Id
-    private Long id;
 
-    private String owner;
-    private Double balance;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private double amount;
 
     public CashCard() {
     }
 
-    public CashCard(Long id, String owner, Double balance) {
-        this.id = id;
-        this.owner = owner;
-        this.balance = balance;
+    public CashCard( double amount) {
+        this.amount = amount;
     }
 
-    public Long getId() {
+    public CashCard(long id, double amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public double getAmount() {
+        return amount;
     }
 
-    public Double getBalance() {
-        return balance;
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        CashCard c = (CashCard) obj;
+        return c.id == this.id && c.amount == this.amount;
     }
 }

@@ -1,4 +1,6 @@
 package com.example.cashcard;
 
-public record CashCard(Long id, Double amount) {
+import jakarta.persistence.Id;
+
+record CashCardRecord(@Id Long id, Double amount) {
 }
